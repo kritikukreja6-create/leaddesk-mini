@@ -50,44 +50,47 @@ A full-stack lead-capture application built for the Digital Heroes internship qu
 ---
 
 ## Folder Structure
+
+```text
 src/
 ├── app/
-│ ├── page.tsx # Public landing page (Server Component)
-│ ├── admin/
-│ │ ├── page.tsx # Admin dashboard (Server Component)
-│ │ └── loading.tsx # Automatic loading state
-│ ├── login/
-│ │ └── page.tsx # Admin login page (Client Component)
-│ ├── not-found.tsx # Custom 404
-│ └── api/
-│ ├── leads/
-│ │ ├── route.ts # POST (public), GET (admin) /api/leads
-│ │ └── [id]/route.ts # PATCH /api/leads/:id (status update)
-│ └── auth/
-│ ├── login/route.ts # POST /api/auth/login
-│ └── logout/route.ts # POST /api/auth/logout
+│   ├── page.tsx            # Public landing page (Server Component)
+│   ├── admin/
+│   │   ├── page.tsx        # Admin dashboard (Server Component)
+│   │   └── loading.tsx     # Automatic loading state
+│   ├── login/
+│   │   └── page.tsx        # Admin login page (Client Component)
+│   ├── not-found.tsx       # Custom 404
+│   └── api/
+│       ├── leads/
+│       │   ├── route.ts    # POST (public), GET (admin) /api/leads
+│       │   └── [id]/route.ts # PATCH /api/leads/:id (status update)
+│       └── auth/
+│           ├── login/route.ts # POST /api/auth/login
+│           └── logout/route.ts # POST /api/auth/logout
 ├── components/
-│ ├── ui/ # shadcn/ui primitives
-│ ├── lead-form.tsx # Public lead form
-│ └── admin/
-│ ├── leads-table.tsx # Table + search + local state
-│ ├── status-select.tsx # Per-lead status dropdown
-│ └── logout-button.tsx
+│   ├── ui/                 # shadcn/ui primitives
+│   ├── lead-form.tsx       # Public lead form
+│   └── admin/
+│       ├── leads-table.tsx # Table + search + local state
+│       ├── status-select.tsx # Per-lead status dropdown
+│       └── logout-button.tsx
 ├── lib/
-│ ├── db.ts # Mongoose connection singleton
-│ ├── auth.ts # JWT sign/verify helpers
-│ ├── rate-limit.ts # In-memory login rate limiter
-│ └── validations/
-│ ├── lead.ts # Shared lead Zod schema
-│ └── login.ts # Shared login Zod schema
+│   ├── db.ts               # Mongoose connection singleton
+│   ├── auth.ts             # JWT sign/verify helpers
+│   ├── rate-limit.ts       # In-memory login rate limiter
+│   └── validations/
+│       ├── lead.ts         # Shared lead Zod schema
+│       └── login.ts        # Shared login Zod schema
 ├── models/
-│ ├── Lead.ts
-│ └── User.ts
-├── middleware.ts # Route protection
+│   ├── Lead.ts
+│   └── User.ts
+├── middleware.ts           # Route protection
 └── types/
-└── global.d.ts
+    └── global.d.ts
 scripts/
-└── seed-admin.ts # One-time admin user creation
+└── seed-admin.ts           # One-time admin user creation
+```
 ---
 
 ## Environment Variables
