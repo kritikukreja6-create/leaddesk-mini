@@ -2,17 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "@/lib/auth";
 
 const protectedPaths = ["/admin"];
-const protectedApiPaths = ["/api/leads"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const method = request.method;
 
   const isProtectedPage = protectedPaths.some((path) =>
     pathname.startsWith(path)
   );
-  const isProtectedApi = protectedApiPaths.some((path) =>
-    pathname.startsWith(path)
-  );
+
+  const isLeadsApi = pathname.startsWith("/api/leads");
+  const isPublicLeadSubmission = isLeadsApi && method === "POST";
+  const isProtectedApi = isLeadsApi && !isPublicLeadSubmission;
 
   if (!isProtectedPage && !isProtectedApi) {
     return NextResponse.next();
